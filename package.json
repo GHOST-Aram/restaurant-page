@@ -1,0 +1,23 @@
+{
+  "name": "restaurant-page",
+  "version": "1.0.0",
+  "description": "Simple webpack bundled restaurant page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GHOST-Aram/restaurant-page.git"
+  },
+  "keywords": [],
+  "author": "ghost-aram <owinoojala254@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GHOST-Aram/restaurant-page/issues"
+  },
+  "homepage": "https://github.com/GHOST-Aram/restaurant-page#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.2.7"
+  }
+}
