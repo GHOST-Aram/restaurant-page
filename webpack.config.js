@@ -36,6 +36,7 @@ module.exports = {
         open: true,
         compress: true,
         historyApiFallback: true,
+        type: 'http',
     }
     
 }
