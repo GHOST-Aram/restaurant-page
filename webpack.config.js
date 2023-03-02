@@ -8,6 +8,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].[contenthash].js',
+        assetModuleFilename: '[name][ext]',
         clean: true,
     },
     plugins: [
@@ -22,6 +23,10 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
+            },
+            {
+                test:/\.(png|jpg|jpeg|svg|gif)$/i,
+                type: 'asset/resource'
             }
         ]
         
@@ -36,7 +41,6 @@ module.exports = {
         open: true,
         compress: true,
         historyApiFallback: true,
-        type: 'http',
     }
     
 }
