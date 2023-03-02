@@ -61,19 +61,25 @@ function createHeading(){
         
                 //Add classnames and src
                 const logos = [logo1, logo2]
-        
-                logos.forEach(logo => {
-                    logo.src = logoImg//imported img
-                    logo.className = 'logo'
-                });
-        
+
                 //create heading text
                 const headingTxt = manager.createHeadingText('Deep Fries Restaurant', 'restaurant-name')
                 headingTxt.className = 'text-bold text-slate-600 text-2xl text-center m-auto' 
+                
+                //Add image src
+                import('../images/coffeecup.png').then(({default: logoImg}) =>{
+                    logos.forEach(logo => {
+                        logo.src = logoImg//imported img
+                        logo.className = 'logo'
+                    });
+                }).catch((error) => console.error(`Error occured while importing image ${error}`))
+                .finally(()=>{
+                    //Appending elements to DOM
+                    const children = [logo1, headingTxt, logo2]
+                    manager.appendToParent(heading,children)
+                })
+        
             
-                //Appending elements to DOM
-                const children = [logo1, headingTxt, logo2]
-                manager.appendToParent(heading,children)
             }).catch((error)=> console.error(error))
             .finally(()=>{
                 contentContainer.appendChild(heading)//Append to content div
