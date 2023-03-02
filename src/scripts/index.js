@@ -58,17 +58,16 @@ const manager = new Manager()//Manager object
         });
 
     //create heading text
-        const headingTxt = document.createElement('h1')
-        headingTxt.className = 'text-bold text-slate-600 text-2xl text-center m-auto' 
-        headingTxt.textContent = 'Deep Fries Restaurant'
+    const headingTxt = manager.createHeadingText('Deep Fries Resant', 'restaurant-name')
+    headingTxt.className = 'text-bold text-slate-600 text-2xl text-center m-auto' 
 
     //Appending elements to DOM
-        heading.appendChild(logo1)
-        heading.appendChild(headingTxt)
-        heading.appendChild(logo2)
+    const children = [logo1, headingTxt, logo2]
+    manager.appendToParent(heading,children)
+    content.appendChild(heading)//Append to content div
+    
 
-    //Appending to content-div
-        content.appendChild(heading)
+    
 
 
         
