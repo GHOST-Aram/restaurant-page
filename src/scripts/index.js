@@ -129,7 +129,14 @@ async function createHeavyBreakFastDiv(){
         .then(({default: Manager}) =>{
             const manager = new Manager()
             const img = manager.createImage('heavy-breakfast-img')
-
+            div.appendChild(img)
+            
+            //Description paragraph
+            const desc = 'We make the healthiest, most delicious and affordable heavy breakfast in town'
+            const descPar = createDescription(desc)
+            //Append paragraph to div
+            div.appendChild(descPar)
+            
             import('../images/huge-breakfast.jpg')
                 .then(({default: brImg})=>{
                     img.src= brImg
@@ -137,18 +144,11 @@ async function createHeavyBreakFastDiv(){
                 .catch((error)=> console.error(`Error occured while loading heavy breakfast image ${error}`))
                 .finally(()=>{
                     //Append img to div
-                    div.appendChild(img)
                 })
         })
         .catch((error)=>{console.error(`Error occured While creating breakfast div${error}`)})
     
-    //Description paragraph
-    const desc = 'We make the healthiest, most delicious and affordable heavy breakfast in town'
-    const descPar = createDescription(desc)
-    setTimeout(()=>{
-        div.appendChild(descPar)
-
-    },3000)
+    
     //Append to container
     contentContainer.appendChild(div)
 }
