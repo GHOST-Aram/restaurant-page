@@ -67,23 +67,29 @@ function createHeading(){
                 headingTxt.className = 'text-bold text-slate-600 text-2xl text-center m-auto' 
                 
                 //Add image src
-                import('../images/coffeecup.png').then(({default: logoImg}) =>{
-                    logos.forEach(logo => {
-                        logo.src = logoImg//imported img
-                        logo.className = 'logo'
-                    });
-                }).catch((error) => console.error(`Error occured while importing image ${error}`))
-                .finally(()=>{
-                    //Appending elements to DOM
-                    const children = [logo1, headingTxt, logo2]
-                    manager.appendToParent(heading,children)
-                })
-        
+                import('../images/coffeecup.png')
+                    .then(({default: logoImg}) =>{
+                       loadLogoImages(logoImg, logos)
+                    })
+                    .catch((error) => console.error(`Error occured while importing image ${error}`))
+                    .finally(()=>{
+                        //Appending elements to DOM
+                        const children = [logo1, headingTxt, logo2]
+                        manager.appendToParent(heading,children)
+                    })
+            
             
             }).catch((error)=> console.error(error))
             .finally(()=>{
                 contentContainer.appendChild(heading)//Append to content div
             })       
+}
+
+ function loadLogoImages(image, imgElementsArray){
+    imgElementsArray.forEach(logo => {
+        logo.src = image//imported img
+        logo.className = 'logo'
+    });
 }
 createPageHeader()
 createHeading()
