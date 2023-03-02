@@ -25,4 +25,7 @@ export default class Manager{
         img.id = id
         return img
     }
+    render(parent, child){
+        parent.appendChild(child)
+    }
 }

@@ -1,13 +1,46 @@
 import '../styles/styles.css'
-import logoImg from '../images/coffeecup.png'
 
 //Global fields
 //Content Container in Main block
 const contentContainer = document.querySelector('#content')
 
 
+//Create container Div
 
+function createContainerDiv(containerTitle){
+    //create div
+    const div = document.createElement('div')
+    div.className = 'm-auto bg-white w-3/5 space-y-4 p-4 rounded-md'
 
+    //Import Manager class
+    import('./manager_module')
+        .then(({default: Manager}) =>{
+            const manager = new Manager()
+
+            //create text-heading for div
+            const headingText = manager.createHeadingText(containerTitle)
+            headingText.className = 'text-bold text-slate-600 text-2xl py-4 text-center m-auto'
+
+            //Append heading to container div
+            div.appendChild(headingText)
+            
+        })
+        //Incase import fails
+        .catch((error) => console.error(`Error occured: ${error}`))
+        .finally(()=>{
+            //return div whether inport is resolved or rejected
+        })
+        return div
+}
+
+//Create description paragrapgh
+function createDescription(text){
+    const prg = document.createElement('p')
+    prg.className = 'text-slate-600 text-center text-xl py-4'
+    prg.textContent = text
+
+    return prg
+}
 //Create Page Header
 function createPageHeader(){
 
@@ -65,19 +98,18 @@ function createHeading(){
                 })
                 .catch((error) => console.error(`Error occured while importing image ${error}`))
                 .finally(()=>{
-                    //Appending elements to DOM
+                    //Append elements to DOM
                         const [logo1, logo2] = logos//destructure logos
                         const children = [logo1, headingTxt, logo2]
                         manager.appendToParent(heading,children)
                     })
-            
-            
             }).catch((error)=> console.error(error))
             .finally(()=>{
                 contentContainer.appendChild(heading)//Append to content div
             })       
 }
 
+//Add image source to logo images
 function createLogosImg(obj){
     const logo1 = obj.createImage('logo-1')
     const logo2 = obj.createImage('logo-2')
@@ -86,20 +118,65 @@ function createLogosImg(obj){
     return [logo1, logo2]
 
 }
+
+async function createHeavyBreakFastDiv(){
+ 
+    //create empty div with heading only
+    const div = createContainerDiv('Delicious Heavy Breakfast')
+
+    //Load img
+    import('./manager_module')
+        .then(({default: Manager}) =>{
+            const manager = new Manager()
+            const img = manager.createImage('heavy-breakfast-img')
+
+            import('../images/huge-breakfast.jpg')
+                .then(({default: brImg})=>{
+                    img.src= brImg
+                })
+                .catch((error)=> console.error(`Error occured while loading heavy breakfast image ${error}`))
+                .finally(()=>{
+                    //Append img to div
+                    div.appendChild(img)
+                })
+        })
+        .catch((error)=>{console.error(`Error occured While creating breakfast div${error}`)})
+    
+    //Description paragraph
+    const desc = 'We make the healthiest, most delicious and affordable heavy breakfast in town'
+    const descPar = createDescription(desc)
+    setTimeout(()=>{
+        div.appendChild(descPar)
+
+    },3000)
+    //Append to container
+    contentContainer.appendChild(div)
+}
  function loadLogoImages(image, imgElementsArray){
     imgElementsArray.forEach(logo => {
         logo.src = image//imported img
         logo.className = 'logo'
     });
 }
+
+//Make buttons for heading
 function makeButtons(obj){
     const homeBtn = obj.createButton('homeBtn', 'Home')
     const menuBtn = obj.createButton('menuBtn', 'Menu')
     const contactBtn = obj.createButton('contactBtn', 'Contacts')
     return [homeBtn,menuBtn,contactBtn]
 }
+
+
+
 createPageHeader()
 createHeading()
+setTimeout(()=>{
+    createHeavyBreakFastDiv()
+
+},3000)
+
+
 
 
 
