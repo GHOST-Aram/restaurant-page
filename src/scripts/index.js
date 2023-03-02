@@ -22,12 +22,10 @@ function createPageHeader(){
             import('./manager_module')
                 .then(({default: Manager}) =>{
                     const manager = new Manager()//Manager object
-                    const homeBtn = manager.createButton('homeBtn', 'Home')
-                    const menuBtn = manager.createButton('menuBtn', 'Menu')
-                    const contactBtn = manager.createButton('contactBtn', 'Contacts')
+                    //make btns array
+                    const btns = makeButtons(manager)
 
                     //Add classes
-                    const btns = [homeBtn,menuBtn,contactBtn]
                     btns.forEach(button =>{
                         button.className = 'py-2 px-8 border-2 border-solid rounded-md bg-white text-slate-600'
                     })
@@ -43,7 +41,6 @@ function createPageHeader(){
             
                     const main = document.querySelector('main')
                     main.prepend(header)//Append header to body
-
                 })
 }
 
@@ -56,24 +53,20 @@ function createHeading(){
         //Create logo images
             import('./manager_module').then(({default: Manager}) =>{
                 const manager = new Manager()
-                const logo1 = manager.createImage('logo-1')
-                const logo2 = manager.createImage('logo-2')
-        
-                //Add classnames and src
-                const logos = [logo1, logo2]
-
+                const logos = createLogosImg(manager)
                 //create heading text
                 const headingTxt = manager.createHeadingText('Deep Fries Restaurant', 'restaurant-name')
                 headingTxt.className = 'text-bold text-slate-600 text-2xl text-center m-auto' 
                 
                 //Add image src
                 import('../images/coffeecup.png')
-                    .then(({default: logoImg}) =>{
-                       loadLogoImages(logoImg, logos)
-                    })
-                    .catch((error) => console.error(`Error occured while importing image ${error}`))
-                    .finally(()=>{
-                        //Appending elements to DOM
+                .then(({default: logoImg}) =>{
+                    loadLogoImages(logoImg, logos)
+                })
+                .catch((error) => console.error(`Error occured while importing image ${error}`))
+                .finally(()=>{
+                    //Appending elements to DOM
+                        const [logo1, logo2] = logos//destructure logos
                         const children = [logo1, headingTxt, logo2]
                         manager.appendToParent(heading,children)
                     })
@@ -85,11 +78,25 @@ function createHeading(){
             })       
 }
 
+function createLogosImg(obj){
+    const logo1 = obj.createImage('logo-1')
+    const logo2 = obj.createImage('logo-2')
+
+    //Add classnames and src
+    return [logo1, logo2]
+
+}
  function loadLogoImages(image, imgElementsArray){
     imgElementsArray.forEach(logo => {
         logo.src = image//imported img
         logo.className = 'logo'
     });
+}
+function makeButtons(obj){
+    const homeBtn = obj.createButton('homeBtn', 'Home')
+    const menuBtn = obj.createButton('menuBtn', 'Menu')
+    const contactBtn = obj.createButton('contactBtn', 'Contacts')
+    return [homeBtn,menuBtn,contactBtn]
 }
 createPageHeader()
 createHeading()
