@@ -1,16 +1,16 @@
 import '../styles/styles.css'
 import logoImg from '../images/coffeecup.png'
-import Manager from './manager_module'
 
 //Global fields
 //Content Container in Main block
-const content = document.querySelector('#content')
+const contentContainer = document.querySelector('#content')
 
-const manager = new Manager()//Manager object
 
 
 
 //Create Page Header
+function createPageHeader(){
+
     const header = document.createElement('header')
     header.className = 'bg-white'
     
@@ -19,53 +19,70 @@ const manager = new Manager()//Manager object
         headerDiv.className = 'm-auto py-4 flex flex-row items-center justify-center gap-8'
         
             //Nav Buttons
-            const homeBtn = manager.createButton('homeBtn', 'Home')
-            const menuBtn = manager.createButton('menuBtn', 'Menu')
-            const contactBtn = manager.createButton('contactBtn', 'Contacts')
+            import('./manager_module')
+                .then(({default: Manager}) =>{
+                    const manager = new Manager()//Manager object
+                    const homeBtn = manager.createButton('homeBtn', 'Home')
+                    const menuBtn = manager.createButton('menuBtn', 'Menu')
+                    const contactBtn = manager.createButton('contactBtn', 'Contacts')
+
+                    //Add classes
+                    const btns = [homeBtn,menuBtn,contactBtn]
+                    btns.forEach(button =>{
+                        button.className = 'py-2 px-8 border-2 border-solid rounded-md bg-white text-slate-600'
+                    })
             
-                //Add classes
-                const btns = [homeBtn,menuBtn,contactBtn]
-                btns.forEach(button =>{
-                    button.className = 'py-2 px-8 border-2 border-solid rounded-md bg-white text-slate-600'
+                    //Append to DOM
+                    btns.forEach(btn =>{
+                        headerDiv.appendChild(btn)
+                    })
                 })
-        
-        //Append to DOM
-        btns.forEach(btn =>{
-            headerDiv.appendChild(btn)
-        })
-        header.appendChild(headerDiv)
+                .catch((error)=>console.error(error))
+                .finally(() =>{
+                    header.appendChild(headerDiv)
+            
+                    const main = document.querySelector('main')
+                    main.prepend(header)//Append header to body
 
-        const main = document.querySelector('main')
-        main.prepend(header)//Append header to body
+                })
+}
 
+function createHeading(){
 
-
-//Create heading div
-    const heading = document.createElement('div')
-    heading.className = 'bg-white py-4 rounded-md flex flex-row items-center justify-between px-16 w-3/5 m-auto'
-
-    //Create logo images
-
-        const logo1 = manager.createImage('logo-1')
-        const logo2 = manager.createImage('logo-2')
-
-        //Add classnames and src
-        const logos = [logo1, logo2]
-
-        logos.forEach(logo => {
-            logo.src = logoImg//imported img
-            logo.className = 'logo'
-        });
-
-    //create heading text
-    const headingTxt = manager.createHeadingText('Deep Fries Resant', 'restaurant-name')
-    headingTxt.className = 'text-bold text-slate-600 text-2xl text-center m-auto' 
-
-    //Appending elements to DOM
-    const children = [logo1, headingTxt, logo2]
-    manager.appendToParent(heading,children)
-    content.appendChild(heading)//Append to content div
+    //Create heading div
+        const heading = document.createElement('div')
+        heading.className = 'bg-white py-4 rounded-md flex flex-row items-center justify-between px-16 w-3/5 m-auto'
     
+        //Create logo images
+            import('./manager_module').then(({default: Manager}) =>{
+                const manager = new Manager()
+                const logo1 = manager.createImage('logo-1')
+                const logo2 = manager.createImage('logo-2')
+        
+                //Add classnames and src
+                const logos = [logo1, logo2]
+        
+                logos.forEach(logo => {
+                    logo.src = logoImg//imported img
+                    logo.className = 'logo'
+                });
+        
+                //create heading text
+                const headingTxt = manager.createHeadingText('Deep Fries Restaurant', 'restaurant-name')
+                headingTxt.className = 'text-bold text-slate-600 text-2xl text-center m-auto' 
+            
+                //Appending elements to DOM
+                const children = [logo1, headingTxt, logo2]
+                manager.appendToParent(heading,children)
+            }).catch((error)=> console.error(error))
+            .finally(()=>{
+                contentContainer.appendChild(heading)//Append to content div
+            })       
+}
+createPageHeader()
+createHeading()
+
+
 
     
 
