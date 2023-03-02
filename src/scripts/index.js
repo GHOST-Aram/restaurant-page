@@ -34,7 +34,7 @@ const manager = new Manager()//Manager object
             headerDiv.appendChild(btn)
         })
         header.appendChild(headerDiv)
-        
+
         const main = document.querySelector('main')
         main.prepend(header)//Append header to body
 
@@ -45,10 +45,17 @@ const manager = new Manager()//Manager object
     heading.className = 'bg-white py-4 rounded-md flex flex-row items-center justify-between px-16 w-3/5 m-auto'
 
     //Create logo images
-        const logo1 = document.createElement('img')
-        logo1.className = 'logo'
-        const logo2 = document.createElement('img')
-        logo2.className = 'logo'
+
+        const logo1 = manager.createImage('logo-1')
+        const logo2 = manager.createImage('logo-2')
+
+        //Add classnames and src
+        const logos = [logo1, logo2]
+
+        logos.forEach(logo => {
+            logo.src = logoImg//imported img
+            logo.className = 'logo'
+        });
 
     //create heading text
         const headingTxt = document.createElement('h1')
@@ -63,8 +70,5 @@ const manager = new Manager()//Manager object
     //Appending to content-div
         content.appendChild(heading)
 
-    //Adding img src to logos
-        const logo = document.querySelectorAll('.logo')
-        logo.forEach(logo => {
-            logo.src = logoImg
-        });
+
+        
