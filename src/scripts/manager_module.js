@@ -49,6 +49,8 @@ export default class Manager{
     createPageHeader(){
         const header = document.createElement('header')
         header.className = 'bg-white'
+
+        return header
     }
     //Create img element with id
     createImage(id) {

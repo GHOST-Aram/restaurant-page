@@ -4,63 +4,33 @@ import Manager from './manager_module'
 //Global fields
 //Content Container in Main block
 const contentContainer = document.querySelector('#content')
-
-
-//Create Page Header
-function createPageHeader(){
-
-    const header = document.createElement('header')
-    header.className = 'bg-white'
-    
-        //Create header div
-        const headerDiv = document.createElement('div')//Div within header
-        headerDiv.className = 'm-auto py-4 flex flex-row items-center justify-center gap-8'
-        
-            //Nav Buttons
-            import('./manager_module')
-                .then(({default: Manager}) =>{
-                    const manager = new Manager()//Manager object
-                    //make btns array
-                    const btns = makeButtons(manager)
-
-                    //Add classes
-                    btns.forEach(button =>{
-                        button.className = 'py-2 px-8 border-2 border-solid rounded-md bg-white text-slate-600'
-                    })
-            
-                    //Append to DOM
-                    btns.forEach(btn =>{
-                        headerDiv.appendChild(btn)
-                    })
-                })
-                .catch((error)=>console.error(error))
-                .finally(() =>{
-                    header.appendChild(headerDiv)
-            
-                    const main = document.querySelector('main')
-                    main.prepend(header)//Append header to body
-                })
-}
-
-
-//Make buttons for heading
-function makeButtons(obj){
-    const homeBtn = obj.createButton('homeBtn', 'Home')
-    const menuBtn = obj.createButton('menuBtn', 'Menu')
-    const contactBtn = obj.createButton('contactBtn', 'Contacts')
-    return [homeBtn,menuBtn,contactBtn]
-}
-
-
-
-createPageHeader()
-// createHeading()
-
+let container
+let heading
 const manager = new Manager()
+
+//Ceate Page header
+const header = manager.createPageHeader()
+
+    //Create div container for Nav buttons
+    container = manager.creatContainer()
+    container.classList.add('flex', 'flex-row', 'items-center', 'justify-center', 'gap-8')
+
+    //Create Nav buttons
+    const homeBtn = manager.createButton('Home', 'home-btn')
+    const menuBtn = manager.createButton('Menu', 'menu-btn')
+    const contactBtn = manager.createButton('Contacts', 'contact-btn')
+    
+    let btns = [homeBtn,menuBtn,contactBtn]
+    //Render
+    btns.forEach(btn =>{
+        container.appendChild(btn)
+    })
+    header.appendChild(container)
+    document.querySelector('main').prepend(header)
 
 
 //PageHeading with business name
-let container = manager.creatContainer()
+container = manager.creatContainer()
 
     //Make container flex
     container.classList.add('flex', 'flex-row', 'items-center', 'justify-between', 'px-16')
@@ -79,7 +49,7 @@ let container = manager.creatContainer()
     }).catch((error)=>console.error(`Error occured during import ${error}`))
 
     //heading
-    let heading = manager.createHeadingText('Deep Fries Restaurant', 'restaurant-name')
+    heading = manager.createHeadingText('Deep Fries Restaurant', 'restaurant-name')
 
     //Render
     container.appendChild(logo1)
