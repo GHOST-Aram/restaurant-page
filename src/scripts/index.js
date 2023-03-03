@@ -20,7 +20,12 @@ displayDinner()
 //footer
 displayFooter()
 
+window.addEventListener('load', (e) =>{
+    document.querySelector('#home-btn').addEventListener('click',(e)=>{
+        console.log(e.target)
+    })
 
+})
 
 
     
