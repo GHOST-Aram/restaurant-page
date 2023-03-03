@@ -42,55 +42,6 @@ function createPageHeader(){
                 })
 }
 
-function createHeading(){
-
-    //Create heading div
-        const heading = document.createElement('div')
-        heading.className = 'bg-white py-4 rounded-md flex flex-row items-center justify-between px-16 w-3/5 m-auto'
-    
-        //Create logo images
-            import('./manager_module').then(({default: Manager}) =>{
-                const manager = new Manager()
-                const logos = createLogosImg(manager)
-                //create heading text
-                const headingTxt = manager.createHeadingText('Deep Fries Restaurant', 'restaurant-name')
-                headingTxt.className = 'text-bold text-slate-600 text-2xl text-center m-auto' 
-                
-                //Add image src
-                import('../images/coffeecup.png')
-                .then(({default: logoImg}) =>{
-                    loadLogoImages(logoImg, logos)
-                })
-                .catch((error) => console.error(`Error occured while importing image ${error}`))
-                .finally(()=>{
-                    //Append elements to DOM
-                        const [logo1, logo2] = logos//destructure logos
-                        const children = [logo1, headingTxt, logo2]
-                        manager.appendToParent(heading,children)
-                    })
-            }).catch((error)=> console.error(error))
-            .finally(()=>{
-                contentContainer.appendChild(heading)//Append to content div
-            })       
-}
-
-//Add image source to logo images
-function createLogosImg(obj){
-    const logo1 = obj.createImage('logo-1')
-    const logo2 = obj.createImage('logo-2')
-
-    //Add classnames and src
-    return [logo1, logo2]
-
-}
-
-
- function loadLogoImages(image, imgElementsArray){
-    imgElementsArray.forEach(logo => {
-        logo.src = image//imported img
-        logo.className = 'logo'
-    });
-}
 
 //Make buttons for heading
 function makeButtons(obj){
@@ -108,12 +59,40 @@ createPageHeader()
 const manager = new Manager()
 
 
+//PageHeading with business name
+let container = manager.creatContainer()
+
+    //Make container flex
+    container.classList.add('flex', 'flex-row', 'items-center', 'justify-between', 'px-16')
+    
+    //first logo image
+    const logo1 = manager.createImage('logo-1')
+    logo1.className = 'logo'
+    
+    //2nd logo img
+    const logo2 = manager.createImage('logo-2')
+    logo2.className = 'logo'
+
+    //Lazy import images
+    import('../images/coffeecup.png').then(({default:logo})=>{
+        logo2.src = logo1.src = logo
+    }).catch((error)=>console.error(`Error occured during import ${error}`))
+
+    //heading
+    let heading = manager.createHeadingText('Deep Fries Restaurant', 'restaurant-name')
+
+    //Render
+    container.appendChild(logo1)
+    container.appendChild(heading)
+    container.appendChild(logo2)
+
+    contentContainer.appendChild(container)
 
 //Heavy breakfast
-const breakfastContainer = manager.creatContainer()
+container = manager.creatContainer()
 
     //Heading
-    let heading = manager.createHeadingText('Delicious Heavy BreakFast', 'heavy-breakfast')
+    heading = manager.createHeadingText('Delicious Heavy BreakFast', 'heavy-breakfast')
 
     //image
     const heavyBreakfastImg = manager.createImage('heavy-breakfast-img')
@@ -128,10 +107,10 @@ const breakfastContainer = manager.creatContainer()
     let descPar = manager.createDescriptionParagraph(text)
 
     //Render
-    breakfastContainer.appendChild(heading)
-    breakfastContainer.appendChild(heavyBreakfastImg)
-    breakfastContainer.appendChild(descPar)
-    contentContainer.appendChild(breakfastContainer)
+    container.appendChild(heading)
+    container.appendChild(heavyBreakfastImg)
+    container.appendChild(descPar)
+    contentContainer.appendChild(container)
 
 
 

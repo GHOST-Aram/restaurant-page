@@ -11,10 +11,11 @@ export default class Manager{
         });
     }
     //Create btn element with id
-    createButton(id, text) {
+    createButton(textContent, id) {
         const button = document.createElement('button')
+        button.className = 'py-2 px-8 border-2 border-solid rounded-md bg-white text-slate-600'
         button.id = id
-        button.textContent = text
+        button.textContent = textContent
         return button
     }
 
@@ -42,6 +43,12 @@ export default class Manager{
         heading.id = id
         heading.className = 'text-bold text-slate-600 text-2xl py-4 text-center m-auto'
         return heading
+    }
+
+    //PageHeader
+    createPageHeader(){
+        const header = document.createElement('header')
+        header.className = 'bg-white'
     }
     //Create img element with id
     createImage(id) {
