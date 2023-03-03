@@ -7,6 +7,7 @@ import { displayDinner, displayHeavyBreakfast,
     
 } from './stage'
 
+document.querySelector('main').className = 'container'
 //header
 displayPageHeader()
 //name and logo

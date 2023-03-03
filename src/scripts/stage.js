@@ -154,7 +154,7 @@ export function displayRestaurantName() {
         container = manager.creatContainer()
 
         //Make container flex
-        container.classList.add('flex', 'flex-row', 'items-center', 'justify-between', 'px-16')
+        container.classList.add('flex', 'flex-row', 'items-center', 'justify-between', 'mt-8', 'w-3/5')
     
         //first logo image
         const logo1 = manager.createImage('logo-1')
@@ -172,10 +172,11 @@ export function displayRestaurantName() {
         //heading
         heading = manager.createHeadingText('Deep Fries Restaurant', 'restaurant-name')
     
+        
         //Render
         container.appendChild(logo1)
         container.appendChild(heading)
         container.appendChild(logo2)
         
-        contentContainer.appendChild(container)
+        document.querySelector('main').prepend(container)
 }
