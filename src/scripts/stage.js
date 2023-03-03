@@ -132,6 +132,7 @@ export function displayPageHeader() {
     //Create div container for Nav buttons
     container = manager.creatContainer()
     container.classList.add('flex', 'flex-row', 'items-center', 'justify-center', 'gap-8')
+    container.classList.remove('space-y-4')
 
     //Create Nav buttons
     const homeBtn = manager.createButton('Home', 'home-btn')

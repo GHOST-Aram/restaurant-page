@@ -83,7 +83,6 @@ window.addEventListener('load', (e) =>{
             breakfastMenu.appendChild(item)
 
         displayMenu(breakfastMenu)
-        
     })
     
     //Display Contacts
