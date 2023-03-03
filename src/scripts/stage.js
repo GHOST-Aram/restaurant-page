@@ -8,13 +8,52 @@ let container
 let heading
 let mealDescriptionText
 
+export function createMenuItem(itemName, price) {
+    //Menu itself
+    const item = manager.creatContainer()
+    item.classList.add('flex', 'flex-row', 'items-center', 
+                        'justify-between', 'py-4','border-b-2', 
+                        'border-solid', 'w-full','border-slate-500')
+    //Item Img
+    const itemImg = manager.createImage(`${itemName.replace(' ', '')}-img`)
+    itemImg.className = 'logo'
 
-//Contacts
-export function displayContacts(){
     
+    //Item Name
+    const name = manager.createDescriptionParagraph(itemName)
+
+    //Item Price
+    const itemPrice = manager.createDescriptionParagraph(price)
+
+    //Add item features
+    item.appendChild(itemImg)
+    item.appendChild(name)
+    item.appendChild(itemPrice)
+
+    return item
+}
+
+//function create menu slot
+export function createMenu(menuName, menuId) {
+     //breakfast menu container
+     container = manager.creatContainer()
+
+     //Menu title
+     heading = manager.createHeadingText(menuName, menuId)
+     heading.classList.add('w-full', 'bg-orange-300')
+ 
+    //item
+ 
+     container.appendChild(heading)
+
+     return container
+}
+//Contacts
+export function displayContacts() {
+
 }
 //Dinner meals
-export function displayDinner(){
+export function displayDinner() {
     const dinnerMeal = new Meal('Sweetest Dinners', 'dinner')
     dinnerMeal.setImageId('dinners-img')
     mealDescriptionText = 'We Know Just what you need in the evening'
@@ -28,14 +67,14 @@ export function displayDinner(){
     }).catch((error)=>console.error(`Error occured while importing image ${error}`))
 }
 
-export function displayFooter(){
+export function displayFooter() {
     //footer
     const footer = manager.createFooter()
     document.body.appendChild(footer)
 
 }
 //Heavy breakfast
-export function displayHeavyBreakfast(){
+export function displayHeavyBreakfast() {
     const heavyBreakfast = new Meal('Heavy Breakfast', 'heavy-breakfast')
     heavyBreakfast.setImageId('heavy-breakfast-img')
     mealDescriptionText = 'We make the healthiest, most delicious and affordable heavy breakfast in town'
@@ -52,7 +91,7 @@ export function displayHeavyBreakfast(){
 
 
 // //Light Breakfast
-export function displayLightBreakfast(){
+export function displayLightBreakfast() {
     const lightBreakfast = new Meal('Hot and Sweet Light-BreakFast', 'light-breakfast')
     lightBreakfast.setImageId('light-breakfast-img')
     mealDescriptionText = 'The Best light breakfasts are made in Deep Fries Restaurant. You won\'t want to miss it.'
@@ -67,7 +106,7 @@ export function displayLightBreakfast(){
 }
 
 //Lunch Meals        
-export function displayLunch(){
+export function displayLunch() {
     const lunchMeal = new Meal('Mouth Watering Lunch', 'lunch-meal')
     lunchMeal.setImageId('lunch-meal-img')
     mealDescriptionText = 'The Best Lunch you will ever have'
@@ -82,10 +121,11 @@ export function displayLunch(){
 }
 
 //DisplayMenu
-export function displayMenu(){
+export function displayMenu(container) {
 
+    contentContainer.appendChild(container)
 }
-export function displayPageHeader(){
+export function displayPageHeader() {
     //Ceate Page header
     const header = manager.createPageHeader()
 
@@ -109,7 +149,7 @@ export function displayPageHeader(){
 }
 
 //Display page heading
-export function displayRestaurantName(){
+export function displayRestaurantName() {
         //PageHeading with business name
         container = manager.creatContainer()
 
