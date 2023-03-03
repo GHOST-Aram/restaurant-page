@@ -45,6 +45,25 @@ export default class Manager{
         return heading
     }
 
+    //create Footer
+    createFooter(){
+        const footer = document.createElement('footer')
+        footer.className = 'bg-white'
+
+        //Create text paragraph
+        const paragrapgh = document.createElement('p')
+        paragrapgh.innerHTML = `Copyright <span>&copy;<span> ${new Date().getFullYear()}`
+        paragrapgh.className = 'text-slate-600 text-sm text-center m-auto'
+
+        //Add container
+        const container = this.creatContainer()
+        container.appendChild(paragrapgh)
+
+        footer.appendChild(container)
+        //Add paragraph
+        
+        return footer
+    }
     //PageHeader
     createPageHeader(){
         const header = document.createElement('header')
@@ -58,7 +77,5 @@ export default class Manager{
         img.id = id
         return img
     }
-    render(parent, child){
-        parent.appendChild(child)
-    }
+    
 }

@@ -162,7 +162,9 @@ container = manager.creatContainer()
     container.appendChild(descPar)
     contentContainer.appendChild(container)
 
-
+//footer
+const footer = manager.createFooter()
+document.body.appendChild(footer)
 
 
 
