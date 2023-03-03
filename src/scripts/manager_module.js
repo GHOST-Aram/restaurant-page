@@ -1,10 +1,5 @@
 export default class Manager{
 
-
-    // async getImageSource(path){
-    //     return await import(path)
-    // }
-    //Add elements to parent
     appendToParent(parent,childrenArray){
         childrenArray.forEach(child => {
             parent.appendChild(child)
