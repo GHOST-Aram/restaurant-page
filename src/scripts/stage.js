@@ -8,6 +8,11 @@ let container
 let heading
 let mealDescriptionText
 
+
+//Contacts
+export function displayContacts(){
+    
+}
 //Dinner meals
 export function displayDinner(){
     const dinnerMeal = new Meal('Sweetest Dinners', 'dinner')
@@ -78,7 +83,7 @@ export function displayLunch(){
 
 //DisplayMenu
 export function displayMenu(){
-    
+
 }
 export function displayPageHeader(){
     //Ceate Page header

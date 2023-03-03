@@ -2,7 +2,7 @@ import '../styles/styles.css'
 import { displayDinner, displayHeavyBreakfast, 
     displayLunch, displayLightBreakfast, 
     displayFooter, displayPageHeader,
-    displayRestaurantName,
+    displayRestaurantName, displayContacts,
     displayMenu
 } from './stage'
 
@@ -34,6 +34,13 @@ window.addEventListener('load', (e) =>{
     })
     
     
+    document.querySelector('#menu-btn').addEventListener('click', (e)=>{
+        document.querySelector('#content').innerHTML = ''
+        displayMenu()
+
+    })
+
+
 
 })
 
