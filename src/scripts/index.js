@@ -1,11 +1,12 @@
 import '../styles/styles.css'
 import { displayDinner, displayHeavyBreakfast, 
-    displayLunch, displayLightBreakfast, 
-    displayFooter, displayPageHeader,
-    displayRestaurantName, displayContacts,
+    displayLunch, displayLightBreakfast, contentContainer,
+    displayFooter, displayPageHeader, creatContact,
+    displayRestaurantName, createContactsContainer,
     displayMenu, createMenu, createMenuItem,
     
 } from './stage'
+
 
 document.querySelector('main').className = 'container'
 //header
@@ -88,7 +89,17 @@ window.addEventListener('load', (e) =>{
     //Display Contacts
     document.querySelector('#contact-btn').addEventListener('click', (e) =>{
         document.querySelector('#content').innerHTML = ''
-        displayContacts()
+        //Create contacts div
+        const contactContainer =  createContactsContainer()
+        //Create element and add to div
+        contactContainer.appendChild(creatContact('Inquiries: ', '+254 00 000 000'))
+        contactContainer.appendChild(creatContact('Suggestions: ', '+254 54 432 211'))
+        contactContainer.appendChild(creatContact('Orders: ', '+254 99 432 211'))
+        contactContainer.appendChild(creatContact('Reservations: ', '+254 99 432 211'))
+        contactContainer.appendChild(creatContact('Complains: ', '+254 99 432 211'))
+
+        //Add to Dom
+        contentContainer.appendChild(contactContainer)
         
     })
 

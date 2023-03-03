@@ -2,11 +2,29 @@ import Meal from './meals'
 import Manager from './manager_module'
 
 //Global Fields
-const contentContainer = document.querySelector('#content')
+export const contentContainer = document.querySelector('#content')
 const manager = new Manager()
 let container
 let heading
 let mealDescriptionText
+
+export function creatContact(contactType, contactDetail) {
+    //Contact labels
+    const contact = manager.createHeadingText(contactType, `${contactType.replace(' ','')}-line`)
+    contact.classList.remove('text-center','py-4')
+    contact.classList.add('ml-16')
+    
+
+    //Contact detail
+    const contSpan = document.createElement('span')
+    contSpan.className = 'text-orange-500 text-xl'
+    contSpan.textContent = contactDetail
+
+    contact.appendChild(contSpan)
+
+    return contact
+
+}
 
 export function createMenuItem(itemName, price) {
     //Menu itself
@@ -41,16 +59,29 @@ export function createMenu(menuName, menuId) {
      //Menu title
      heading = manager.createHeadingText(menuName, menuId)
      heading.classList.add('w-full', 'bg-orange-300')
- 
-    //item
- 
+     
+     //item
+     
      container.appendChild(heading)
-
+     
      return container
-}
-//Contacts
-export function displayContacts() {
+    }
+    //Contacts
+    export function createContactsContainer() {
+        const contactsContainer = manager.creatContainer()
+        
+        //Container heading
+        heading = manager.createHeadingText('Our Contacts','contacts')
+        heading.classList.add('w-full', 'bg-orange-300')
 
+        // //Contact labels
+        // const enquiry = manager.createHeadingText('Enquiries:', 'enquiries-line')
+        // enquiry.classList.remove('text-center')
+        
+
+        contactsContainer.appendChild(heading)
+        // contactsContainer.appendChild(enquiry)
+        return contactsContainer
 }
 //Dinner meals
 export function displayDinner() {
