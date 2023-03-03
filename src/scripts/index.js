@@ -12,7 +12,7 @@ displayPageHeader()
 displayRestaurantName()
 
 
-Meals
+// Display Meals
 displayHeavyBreakfast()
 displayLightBreakfast()
 displayLunch()
@@ -33,14 +33,19 @@ window.addEventListener('load', (e) =>{
         
     })
     
-    
+    //Display Menu
     document.querySelector('#menu-btn').addEventListener('click', (e)=>{
         document.querySelector('#content').innerHTML = ''
         displayMenu()
-
+        
     })
-
-
+    
+    //Display Contacts
+    document.querySelector('#contact-btn').addEventListener('click', (e) =>{
+        document.querySelector('#content').innerHTML = ''
+        displayContacts()
+        
+    })
 
 })
 
