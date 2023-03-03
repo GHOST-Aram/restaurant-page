@@ -1,46 +1,11 @@
 import '../styles/styles.css'
+import Manager from './manager_module'
 
 //Global fields
 //Content Container in Main block
 const contentContainer = document.querySelector('#content')
 
 
-//Create container Div
-
-function createContainerDiv(containerTitle){
-    //create div
-    const div = document.createElement('div')
-    div.className = 'm-auto bg-white w-3/5 space-y-4 p-4 rounded-md'
-
-    //Import Manager class
-    import('./manager_module')
-        .then(({default: Manager}) =>{
-            const manager = new Manager()
-
-            //create text-heading for div
-            const headingText = manager.createHeadingText(containerTitle)
-            headingText.className = 'text-bold text-slate-600 text-2xl py-4 text-center m-auto'
-
-            //Append heading to container div
-            div.appendChild(headingText)
-            
-        })
-        //Incase import fails
-        .catch((error) => console.error(`Error occured: ${error}`))
-        .finally(()=>{
-            //return div whether inport is resolved or rejected
-        })
-        return div
-}
-
-//Create description paragrapgh
-function createDescription(text){
-    const prg = document.createElement('p')
-    prg.className = 'text-slate-600 text-center text-xl py-4'
-    prg.textContent = text
-
-    return prg
-}
 //Create Page Header
 function createPageHeader(){
 
@@ -119,39 +84,7 @@ function createLogosImg(obj){
 
 }
 
-async function createHeavyBreakFastDiv(){
- 
-    //create empty div with heading only
-    const div = createContainerDiv('Delicious Heavy Breakfast')
 
-    //Load img
-    import('./manager_module')
-        .then(({default: Manager}) =>{
-            const manager = new Manager()
-            const img = manager.createImage('heavy-breakfast-img')
-            div.appendChild(img)
-            
-            //Description paragraph
-            const desc = 'We make the healthiest, most delicious and affordable heavy breakfast in town'
-            const descPar = createDescription(desc)
-            //Append paragraph to div
-            div.appendChild(descPar)
-            
-            import('../images/huge-breakfast.jpg')
-                .then(({default: brImg})=>{
-                    img.src= brImg
-                })
-                .catch((error)=> console.error(`Error occured while loading heavy breakfast image ${error}`))
-                .finally(()=>{
-                    //Append img to div
-                })
-        })
-        .catch((error)=>{console.error(`Error occured While creating breakfast div${error}`)})
-    
-    
-    //Append to container
-    contentContainer.appendChild(div)
-}
  function loadLogoImages(image, imgElementsArray){
     imgElementsArray.forEach(logo => {
         logo.src = image//imported img
@@ -170,11 +103,39 @@ function makeButtons(obj){
 
 
 createPageHeader()
-createHeading()
-setTimeout(()=>{
-    createHeavyBreakFastDiv()
+// createHeading()
 
-},3000)
+const manager = new Manager()
+
+
+
+//Heavy breakfast
+const breakfastContainer = manager.creatContainer()
+
+    //Heading
+    let heading = manager.createHeadingText('Delicious Heavy BreakFast', 'heavy-breakfast')
+
+    //image
+    const heavyBreakfastImg = manager.createImage('heavy-breakfast-img')
+
+    //import image
+    import('../images/huge-breakfast.jpg').then(({default: image}) =>{
+        heavyBreakfastImg.src = image
+    }).catch((error)=>console.error(`Error occured while importing image ${error}`))
+
+    //Description paragraph
+    let text = 'We make the healthiest, most delicious and affordable heavy breakfast in town'
+    let descPar = manager.createDescriptionParagraph(text)
+
+    //Render
+    breakfastContainer.appendChild(heading)
+    breakfastContainer.appendChild(heavyBreakfastImg)
+    breakfastContainer.appendChild(descPar)
+    contentContainer.appendChild(breakfastContainer)
+
+
+
+
 
 
 
