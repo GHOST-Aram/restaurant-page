@@ -2,7 +2,8 @@ import '../styles/styles.css'
 import { displayDinner, displayHeavyBreakfast, 
     displayLunch, displayLightBreakfast, 
     displayFooter, displayPageHeader,
-    displayRestaurantName
+    displayRestaurantName,
+    displayMenu
 } from './stage'
 
 //header
@@ -11,7 +12,7 @@ displayPageHeader()
 displayRestaurantName()
 
 
-//Meals
+Meals
 displayHeavyBreakfast()
 displayLightBreakfast()
 displayLunch()
@@ -21,9 +22,18 @@ displayDinner()
 displayFooter()
 
 window.addEventListener('load', (e) =>{
+
+    //Display home
     document.querySelector('#home-btn').addEventListener('click',(e)=>{
-        console.log(e.target)
+        document.querySelector('#content').innerHTML = ''
+        displayHeavyBreakfast()
+        displayLightBreakfast()
+        displayLunch()
+        displayDinner()
+        
     })
+    
+    
 
 })
 

@@ -76,58 +76,61 @@ export function displayLunch(){
     }).catch((error)=>console.error(`Error occured while importing image ${error}`))
 }
 
+//DisplayMenu
+export function displayMenu(){
+    
+}
+export function displayPageHeader(){
+    //Ceate Page header
+    const header = manager.createPageHeader()
 
-    export function displayPageHeader(){
-        //Ceate Page header
-        const header = manager.createPageHeader()
+    //Create div container for Nav buttons
+    container = manager.creatContainer()
+    container.classList.add('flex', 'flex-row', 'items-center', 'justify-center', 'gap-8')
+
+    //Create Nav buttons
+    const homeBtn = manager.createButton('Home', 'home-btn')
+    const menuBtn = manager.createButton('Menu', 'menu-btn')
+    const contactBtn = manager.createButton('Contacts', 'contact-btn')
     
-        //Create div container for Nav buttons
+    let btns = [homeBtn,menuBtn,contactBtn]
+    //Render
+    btns.forEach(btn =>{
+        container.appendChild(btn)
+    })
+    header.appendChild(container)
+    document.querySelector('main').prepend(header)
+
+}
+
+//Display page heading
+export function displayRestaurantName(){
+        //PageHeading with business name
         container = manager.creatContainer()
-        container.classList.add('flex', 'flex-row', 'items-center', 'justify-center', 'gap-8')
+
+        //Make container flex
+        container.classList.add('flex', 'flex-row', 'items-center', 'justify-between', 'px-16')
     
-        //Create Nav buttons
-        const homeBtn = manager.createButton('Home', 'home-btn')
-        const menuBtn = manager.createButton('Menu', 'menu-btn')
-        const contactBtn = manager.createButton('Contacts', 'contact-btn')
-        
-        let btns = [homeBtn,menuBtn,contactBtn]
+        //first logo image
+        const logo1 = manager.createImage('logo-1')
+        logo1.className = 'logo'
+    
+        //2nd logo img
+        const logo2 = manager.createImage('logo-2')
+        logo2.className = 'logo'
+    
+        //Lazy import images
+        import('../images/coffeecup.png').then(({default:logo})=>{
+            logo2.src = logo1.src = logo
+        }).catch((error)=>console.error(`Error occured during import ${error}`))
+    
+        //heading
+        heading = manager.createHeadingText('Deep Fries Restaurant', 'restaurant-name')
+    
         //Render
-        btns.forEach(btn =>{
-            container.appendChild(btn)
-        })
-        header.appendChild(container)
-        document.querySelector('main').prepend(header)
-    
-    }
-    
-    //Display page heading
-    export function displayRestaurantName(){
-            //PageHeading with business name
-            container = manager.creatContainer()
-    
-            //Make container flex
-            container.classList.add('flex', 'flex-row', 'items-center', 'justify-between', 'px-16')
+        container.appendChild(logo1)
+        container.appendChild(heading)
+        container.appendChild(logo2)
         
-            //first logo image
-            const logo1 = manager.createImage('logo-1')
-            logo1.className = 'logo'
-        
-            //2nd logo img
-            const logo2 = manager.createImage('logo-2')
-            logo2.className = 'logo'
-        
-            //Lazy import images
-            import('../images/coffeecup.png').then(({default:logo})=>{
-                logo2.src = logo1.src = logo
-            }).catch((error)=>console.error(`Error occured during import ${error}`))
-        
-            //heading
-            heading = manager.createHeadingText('Deep Fries Restaurant', 'restaurant-name')
-        
-            //Render
-            container.appendChild(logo1)
-            container.appendChild(heading)
-            container.appendChild(logo2)
-            
-            contentContainer.appendChild(container)
-    }
+        contentContainer.appendChild(container)
+}
