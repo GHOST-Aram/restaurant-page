@@ -144,7 +144,7 @@ export function displayPageHeader() {
         container.appendChild(btn)
     })
     header.appendChild(container)
-    document.querySelector('main').prepend(header)
+    document.body.prepend(header)
 
 }
 
