@@ -1,180 +1,90 @@
 import '../styles/styles.css'
+import Manager from './manager_module'
 
 //Global fields
 //Content Container in Main block
 const contentContainer = document.querySelector('#content')
+let container
+let heading
+const manager = new Manager()
 
+//Ceate Page header
+const header = manager.createPageHeader()
 
-//Create container Div
+    //Create div container for Nav buttons
+    container = manager.creatContainer()
+    container.classList.add('flex', 'flex-row', 'items-center', 'justify-center', 'gap-8')
 
-function createContainerDiv(containerTitle){
-    //create div
-    const div = document.createElement('div')
-    div.className = 'm-auto bg-white w-3/5 space-y-4 p-4 rounded-md'
-
-    //Import Manager class
-    import('./manager_module')
-        .then(({default: Manager}) =>{
-            const manager = new Manager()
-
-            //create text-heading for div
-            const headingText = manager.createHeadingText(containerTitle)
-            headingText.className = 'text-bold text-slate-600 text-2xl py-4 text-center m-auto'
-
-            //Append heading to container div
-            div.appendChild(headingText)
-            
-        })
-        //Incase import fails
-        .catch((error) => console.error(`Error occured: ${error}`))
-        .finally(()=>{
-            //return div whether inport is resolved or rejected
-        })
-        return div
-}
-
-//Create description paragrapgh
-function createDescription(text){
-    const prg = document.createElement('p')
-    prg.className = 'text-slate-600 text-center text-xl py-4'
-    prg.textContent = text
-
-    return prg
-}
-//Create Page Header
-function createPageHeader(){
-
-    const header = document.createElement('header')
-    header.className = 'bg-white'
+    //Create Nav buttons
+    const homeBtn = manager.createButton('Home', 'home-btn')
+    const menuBtn = manager.createButton('Menu', 'menu-btn')
+    const contactBtn = manager.createButton('Contacts', 'contact-btn')
     
-        //Create header div
-        const headerDiv = document.createElement('div')//Div within header
-        headerDiv.className = 'm-auto py-4 flex flex-row items-center justify-center gap-8'
-        
-            //Nav Buttons
-            import('./manager_module')
-                .then(({default: Manager}) =>{
-                    const manager = new Manager()//Manager object
-                    //make btns array
-                    const btns = makeButtons(manager)
+    let btns = [homeBtn,menuBtn,contactBtn]
+    //Render
+    btns.forEach(btn =>{
+        container.appendChild(btn)
+    })
+    header.appendChild(container)
+    document.querySelector('main').prepend(header)
 
-                    //Add classes
-                    btns.forEach(button =>{
-                        button.className = 'py-2 px-8 border-2 border-solid rounded-md bg-white text-slate-600'
-                    })
-            
-                    //Append to DOM
-                    btns.forEach(btn =>{
-                        headerDiv.appendChild(btn)
-                    })
-                })
-                .catch((error)=>console.error(error))
-                .finally(() =>{
-                    header.appendChild(headerDiv)
-            
-                    const main = document.querySelector('main')
-                    main.prepend(header)//Append header to body
-                })
-}
 
-function createHeading(){
+//PageHeading with business name
+container = manager.creatContainer()
 
-    //Create heading div
-        const heading = document.createElement('div')
-        heading.className = 'bg-white py-4 rounded-md flex flex-row items-center justify-between px-16 w-3/5 m-auto'
+    //Make container flex
+    container.classList.add('flex', 'flex-row', 'items-center', 'justify-between', 'px-16')
     
-        //Create logo images
-            import('./manager_module').then(({default: Manager}) =>{
-                const manager = new Manager()
-                const logos = createLogosImg(manager)
-                //create heading text
-                const headingTxt = manager.createHeadingText('Deep Fries Restaurant', 'restaurant-name')
-                headingTxt.className = 'text-bold text-slate-600 text-2xl text-center m-auto' 
-                
-                //Add image src
-                import('../images/coffeecup.png')
-                .then(({default: logoImg}) =>{
-                    loadLogoImages(logoImg, logos)
-                })
-                .catch((error) => console.error(`Error occured while importing image ${error}`))
-                .finally(()=>{
-                    //Append elements to DOM
-                        const [logo1, logo2] = logos//destructure logos
-                        const children = [logo1, headingTxt, logo2]
-                        manager.appendToParent(heading,children)
-                    })
-            }).catch((error)=> console.error(error))
-            .finally(()=>{
-                contentContainer.appendChild(heading)//Append to content div
-            })       
-}
-
-//Add image source to logo images
-function createLogosImg(obj){
-    const logo1 = obj.createImage('logo-1')
-    const logo2 = obj.createImage('logo-2')
-
-    //Add classnames and src
-    return [logo1, logo2]
-
-}
-
-async function createHeavyBreakFastDiv(){
- 
-    //create empty div with heading only
-    const div = createContainerDiv('Delicious Heavy Breakfast')
-
-    //Load img
-    import('./manager_module')
-        .then(({default: Manager}) =>{
-            const manager = new Manager()
-            const img = manager.createImage('heavy-breakfast-img')
-            div.appendChild(img)
-            
-            //Description paragraph
-            const desc = 'We make the healthiest, most delicious and affordable heavy breakfast in town'
-            const descPar = createDescription(desc)
-            //Append paragraph to div
-            div.appendChild(descPar)
-            
-            import('../images/huge-breakfast.jpg')
-                .then(({default: brImg})=>{
-                    img.src= brImg
-                })
-                .catch((error)=> console.error(`Error occured while loading heavy breakfast image ${error}`))
-                .finally(()=>{
-                    //Append img to div
-                })
-        })
-        .catch((error)=>{console.error(`Error occured While creating breakfast div${error}`)})
+    //first logo image
+    const logo1 = manager.createImage('logo-1')
+    logo1.className = 'logo'
     
-    
-    //Append to container
-    contentContainer.appendChild(div)
-}
- function loadLogoImages(image, imgElementsArray){
-    imgElementsArray.forEach(logo => {
-        logo.src = image//imported img
-        logo.className = 'logo'
-    });
-}
+    //2nd logo img
+    const logo2 = manager.createImage('logo-2')
+    logo2.className = 'logo'
 
-//Make buttons for heading
-function makeButtons(obj){
-    const homeBtn = obj.createButton('homeBtn', 'Home')
-    const menuBtn = obj.createButton('menuBtn', 'Menu')
-    const contactBtn = obj.createButton('contactBtn', 'Contacts')
-    return [homeBtn,menuBtn,contactBtn]
-}
+    //Lazy import images
+    import('../images/coffeecup.png').then(({default:logo})=>{
+        logo2.src = logo1.src = logo
+    }).catch((error)=>console.error(`Error occured during import ${error}`))
+
+    //heading
+    heading = manager.createHeadingText('Deep Fries Restaurant', 'restaurant-name')
+
+    //Render
+    container.appendChild(logo1)
+    container.appendChild(heading)
+    container.appendChild(logo2)
+
+    contentContainer.appendChild(container)
+
+//Heavy breakfast
+container = manager.creatContainer()
+
+    //Heading
+    heading = manager.createHeadingText('Delicious Heavy BreakFast', 'heavy-breakfast')
+
+    //image
+    const heavyBreakfastImg = manager.createImage('heavy-breakfast-img')
+
+    //import image
+    import('../images/huge-breakfast.jpg').then(({default: image}) =>{
+        heavyBreakfastImg.src = image
+    }).catch((error)=>console.error(`Error occured while importing image ${error}`))
+
+    //Description paragraph
+    let text = 'We make the healthiest, most delicious and affordable heavy breakfast in town'
+    let descPar = manager.createDescriptionParagraph(text)
+
+    //Render
+    container.appendChild(heading)
+    container.appendChild(heavyBreakfastImg)
+    container.appendChild(descPar)
+    contentContainer.appendChild(container)
 
 
 
-createPageHeader()
-createHeading()
-setTimeout(()=>{
-    createHeavyBreakFastDiv()
 
-},3000)
 
 
 
