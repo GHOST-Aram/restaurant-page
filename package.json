@@ -7,11 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
     "watch": "webpack --watch",
-    "serve": "webpack serve"
+    "serve": "webpack serve",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GHOST-Aram/restaurant-page.git"
+    "url": "https://github.com/GHOST-Aram/restaurant-page"
   },
   "keywords": [],
   "author": "ghost-aram <owinoojala254@gmail.com>",
@@ -19,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/GHOST-Aram/restaurant-page/issues"
   },
-  "homepage": "https://github.com/GHOST-Aram/restaurant-page#readme",
+  "homepage": "https://ghost-aram.github.io/restaurant-pages",
   "devDependencies": {
     "css-loader": "^6.7.3",
     "html-webpack-plugin": "^5.5.0",
@@ -29,5 +30,8 @@
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "gh-pages": "^5.0.0"
   }
 }

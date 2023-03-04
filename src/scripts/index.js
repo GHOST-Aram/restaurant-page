@@ -5,7 +5,7 @@ import { displayDinner, displayHeavyBreakfast,
     displayRestaurantName, createContactsContainer,
     displayMenu, createMenu, createMenuItem,
     
-} from './stage'
+} from './stage.js'
 
 
 document.querySelector('main').className = 'container'
