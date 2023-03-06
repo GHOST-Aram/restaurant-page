@@ -47,8 +47,9 @@ Simple webpack bundled restaurant page
 
     setters and getters methods
 # Item class
+    Item class encasuplates the properties of items
     item.name
-    item.#img
+    item.#img.src
     item.price
     Item.#id
 
