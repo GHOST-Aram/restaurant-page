@@ -17,7 +17,7 @@ export default class DOMManager {
 
     }
      //Create btn element with id
-    createButton(textContent, id) {
+    #createButton(textContent, id) {
         const button = document.createElement('button')
         button.className = 'py-2 px-8 border-2 border-solid rounded-md bg-white text-slate-600'
         button.id = id
@@ -67,19 +67,11 @@ export default class DOMManager {
         
         return container
     }
-    //Create description paragraph for available meals
-    createParagraph(descriptionText){
-        const paragrapgh = document.createElement('p')
-        paragrapgh.className = 'text-slate-600 text-center text-xl py-4'
-        paragrapgh.textContent = descriptionText
-        
-        return paragrapgh
-    }
     // return styled footer element with textContent
     createFooter(){
         const footer = document.createElement('footer')
         footer.className = 'bg-white'
-
+        
         //Create text paragraph
         const paragrapgh = document.createElement('p')
         paragrapgh.innerHTML = `Copyright <span>&copy;<span> ${new Date().getFullYear()}`
@@ -120,7 +112,7 @@ export default class DOMManager {
         //image
         const mealImg = this.createImage(`${Meal.generateId()}-image`)
         mealImg.classList.add('meals-img')
-
+        
         //Description paragraph
         const description = this.createParagraph(Meal.getDescription())
 
@@ -153,37 +145,37 @@ export default class DOMManager {
         //Menu itself
         const menuItem =this.creatContainer()
         menuItem.classList.add('flex', 'flex-row', 'items-center', 
-                            'justify-between', 'py-4','border-b-2', 
-                            'border-solid', 'w-full','border-slate-500')
+        'justify-between', 'py-4','border-b-2', 
+        'border-solid', 'w-full','border-slate-500')
         //Item Img
         const itemImg =this.createImage(`${Item.generateId()}-img`)
         itemImg.className = 'item'
-    
+        
         
         //Item Name
         const name =this.createParagraph(Item.name)
-    
+        
         //Item Price
         const itemPrice =this.createParagraph(Item.getPrice())
-    
+        
         //Add item features
         menuItem.appendChild(itemImg)
         menuItem.appendChild(name)
         menuItem.appendChild(itemPrice)
-    
+        
         return menuItem
     }
     //return styled Div containing Nav buttons
     createNavigation() {
-         //Create div container for Nav buttons
+        //Create div container for Nav buttons
         const container = this.creatContainer()
         container.classList.add('flex', 'flex-row', 'items-center', 'justify-center', 'gap-8')
         container.classList.remove('space-y-4')
-
+        
         //Create Nav buttons
-        const homeBtn = this.createButton('Home', 'home-btn')
-        const menuBtn = this.createButton('Menu', 'menu-btn')
-        const contactBtn = this.createButton('Contacts', 'contact-btn')
+        const homeBtn = this.#createButton('Home', 'home-btn')
+        const menuBtn = this.#createButton('Menu', 'menu-btn')
+        const contactBtn = this.#createButton('Contacts', 'contact-btn')
         
         let btns = [homeBtn,menuBtn,contactBtn]
         //Render
@@ -201,10 +193,18 @@ export default class DOMManager {
 
         return header
     }
+    //Create description paragraph for available meals
+    createParagraph(descriptionText){
+        const paragrapgh = document.createElement('p')
+        paragrapgh.className = 'text-slate-600 text-center text-xl py-4'
+        paragrapgh.textContent = descriptionText
+        
+        return paragrapgh
+    }
     createTradeMark(TradeMark){
         //Parent container
         const container = this.creatContainer()
-
+        
         //Make container flex
         container.classList.add('flex', 'flex-row', 'items-center', 'justify-between', 'mt-8', 'w-3/5')
     
