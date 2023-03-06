@@ -11,7 +11,7 @@ export default class Item{
     generateId(){
         //generate id jusing name
         //Name is expected to be unique
-        return this.name.toLowercase().replace('','-')
+        return `${this.name.toLocaleLowerCase().replaceAll(' ','-')}`
     }
    
     getPrice(){

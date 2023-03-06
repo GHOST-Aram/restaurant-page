@@ -131,7 +131,7 @@ export default class DOMManager {
         const container = this.creatContainer()
    
         //Menu title
-        heading = this.createHeading(menuName, `${menuName}-menu`)
+        const heading = this.createHeading(menuName, `${menuName}-menu`)
         heading.classList.add('w-full', 'bg-orange-300')
         
         //item
@@ -149,7 +149,7 @@ export default class DOMManager {
         'border-solid', 'w-full','border-slate-500')
         //Item Img
         const itemImg =this.createImage(`${Item.generateId()}-img`)
-        itemImg.className = 'item'
+        itemImg.className = 'menu-item-img'
         
         
         //Item Name
