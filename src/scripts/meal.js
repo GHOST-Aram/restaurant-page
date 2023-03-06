@@ -14,7 +14,7 @@ export default class Meal{
         //Meal.#id
         //generate id using name
         //Name is expected to be unique
-        return this.name.toLowercase().replace('','-')
+        return this.name.toLocaleLowerCase().replaceAll(' ','-')
     }
     getDescription(){
         //return meal description text 
@@ -23,6 +23,7 @@ export default class Meal{
     
     setDescription(description){
         //Set description text for the meal
-        this.description = description
+        this.#description = description
     }
+    
 }

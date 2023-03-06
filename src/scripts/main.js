@@ -1,5 +1,6 @@
 import '../styles/styles.css'
 import DOMManager from "./dom_manager.js";
+import Meal from './meal';
 import TradeMark from './trade_mark';
 const content = document.querySelector('#content')
 //DOMMananger Object
@@ -28,3 +29,14 @@ const manager = new DOMManager()
             document.querySelector('#deep-fries-restaurant-logo-1').src = logoImg
             document.querySelector('#deep-fries-restaurant-logo-2').src = logoImg
         }).catch((error)=>{console.error(`Error occured while importing Logo Images: ${error}`)})
+
+    
+    //Create and display Meals
+    const heavyBreakfast = new Meal('Heavy Breakfast')
+    heavyBreakfast.setDescription('Healthiest and Most Delicious Heavy Breakfasts in Town')
+    manager.render(content,manager.createMealCard(heavyBreakfast))
+
+    //Import image
+    import('../images/huge-breakfast.jpg').then(({default:breakfastImg}) =>{
+        document.querySelector('#heavy-breakfast-image').src = breakfastImg
+    }).catch((error)=>{console.error(`Error occured while importing Heavy Breakfast Image Images: ${error}`)})
