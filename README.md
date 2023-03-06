@@ -15,36 +15,40 @@ Simple webpack bundled restaurant page
 
     all DOMManager methods return styled DOM elements except render() method
 # TradeMark
-    TradeMark.businessName
-    TradeMark.logo
+    TradeMark.#businessName
+    TradeMark.#logo = {src:'',id:''}
+
+    TradeMark.setBusinessName(businessName)
+    TradeMark.setLogo(path/to/img): set logo.src to path and unique logo.id
+    TradeMark.getBusinessName():-return businessName
+    TradeMark.getLogo():-return logo obj
+
 
 # Menu class imports item class
-    item.name
-    item.price
-    item.Img
-    item.id
-    Menu.createMenuItem():- return menu object
+    
+    Menu.createMenuItem(Item):- return menu object
     
 # Meal class
     mealCard object
     meal.name
-    meal.description
-    meal.img
-    meal.id
+    meal.#description
+    meal.#img
+    meal.#id
 
 # Contact class
 
-    contact.telephone
-    contact.email
-    contact.messenger
-    contact.Twitter
-    contact.facebook
-    contact.instagram
-    contact.location
+    contact.#telephone
+    contact.#email
+    contact.#messenger
+    contact.#Twitter
+    contact.#facebook
+    contact.#instagram
+    contact.#location
 
+    setters and getters methods
 # Item class
     item.name
-    item.img
+    item.#img
     item.price
-    Item.id
+    Item.#id
 
