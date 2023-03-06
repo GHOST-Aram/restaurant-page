@@ -58,7 +58,7 @@ export default class Contact{
         this.#telephone = telephone
     }
     setTwitter(twitter){
-        this.twitter = twitter
+        this.#twitter = twitter
     }
     
 }

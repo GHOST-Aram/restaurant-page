@@ -35,7 +35,7 @@ export default class DOMManager {
         //Contact detail
         const contSpan = document.createElement('span')
         contSpan.className = 'text-orange-500 text-xl'
-        contSpan.textContent = contactDetail
+        contSpan.textContent = `:   ${contactDetail}`
     
         contact.appendChild(contSpan)
     
@@ -43,19 +43,14 @@ export default class DOMManager {
     }
     //Create contacts container
     createContactsContainer() {
-        const contactsContainer = manager.creatContainer()
+        const contactsContainer = this.creatContainer()
         
         //Container heading
-        heading = manager.createHeading('Our Contacts','contacts')
+        const heading = this.createHeading('Our Contacts','contacts')
         heading.classList.add('w-full', 'bg-orange-300')
 
-        // //Contact labels
-        // const enquiry = manager.createHeadingText('Enquiries:', 'enquiries-line')
-        // enquiry.classList.remove('text-center')
-        
-
         contactsContainer.appendChild(heading)
-        // contactsContainer.appendChild(enquiry)
+
         return contactsContainer
 }
     //create empty container

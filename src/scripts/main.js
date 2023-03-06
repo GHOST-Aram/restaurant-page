@@ -1,4 +1,5 @@
 import '../styles/styles.css'
+import Contact from './contact';
 import DOMManager from "./dom_manager.js";
 import Item from './item';
 import Meal from './meal';
@@ -132,7 +133,45 @@ const manager = new DOMManager()
 
             }else if(e.target.id === 'contact-btn'){
                 content.innerHTML = ''
-                console.log('Contacts come here')
+                const contactContainer = manager.createContactsContainer()
+
+                //Email contact
+                const contact = new Contact()
+                    //Email
+                    contact.setEmail('deepfries@gmail.com')
+                    const email = manager.creatContact('Email', contact.getEmail())
+
+                    //Facebook
+                    contact.setFacebook('Deep Fries Restauraant')
+                    const facebook = manager.creatContact('Facebook', contact.getFacebook())
+
+                    //Instagram
+                    contact.setInstagram('@deep_fries_meals')
+                    const instagram = manager.creatContact('Instagram', contact.getInstagram())
+
+                    //Location
+                    contact.setLocationAddress('Alpha Building 2nd Floor ')
+                    const location = manager.creatContact('Location', contact.getLocationAddress())
+
+                    //Messenger
+                    contact.setMessenger('4355-SFDF-8903')
+                    const messenger = manager.creatContact('Messenger', contact.getMessenger())
+
+                    //Telephone
+                    contact.setTelephone('254 79 889 665')
+                    const telephone = manager.creatContact('Telephone', contact.getTelephone())
+
+                    //Twitter
+                    contact.setTwitter('@deep_fries')
+                    const twitter = manager.creatContact('Twitter', contact.getTwitter())
+
+                    const contacts = [email, facebook,telephone,instagram,location,messenger,twitter]
+
+                    contacts.forEach(contact => {
+                        contactContainer.appendChild(contact)
+                    })
+                manager.render(content, contactContainer)
+
             }
         })
     })
