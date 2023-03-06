@@ -8,11 +8,11 @@ import { displayDinner, displayHeavyBreakfast,
 } from './stage.js'
 
 
-document.querySelector('main').className = 'container'
-//header
-displayPageHeader()
-//name and logo
-displayRestaurantName()
+// document.querySelector('main').className = 'container'
+// //header
+// displayPageHeader()
+// //name and logo
+// displayRestaurantName()
 
 
 // Display Meals

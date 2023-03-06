@@ -5,8 +5,10 @@
 body{
     background-image: repeating-linear-gradient(45deg, orange, orangered 5%, yellow 10%);
 }
+.menu-item-img,
 .logo{
     height: 90px;
+    border-radius: 4px;
 }
 .meals-img{
     width: 70%;

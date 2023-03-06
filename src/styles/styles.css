@@ -682,6 +682,11 @@ video {
   color: rgb(249 115 22 / var(--tw-text-opacity));
 }
 
+.text-orange-600 {
+  --tw-text-opacity: 1;
+  color: rgb(234 88 12 / var(--tw-text-opacity));
+}
+
 .text-slate-600 {
   --tw-text-opacity: 1;
   color: rgb(71 85 105 / var(--tw-text-opacity));
@@ -691,8 +696,10 @@ body{
   background-image: repeating-linear-gradient(45deg, orange, orangered 5%, yellow 10%);
 }
 
+.menu-item-img,
 .logo{
   height: 90px;
+  border-radius: 4px;
 }
 
 .meals-img{
