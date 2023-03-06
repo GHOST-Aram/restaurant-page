@@ -1,7 +1,7 @@
 # restaurant-page
 Simple webpack bundled restaurant page
 
-# Display manager class depends on menu, meals and contacts
+# Display manager class depends on Item, Meal, TradeMark and Contact
     -Display manager class decides how objects are displayed
     DOMManager.createPageHeader()
     DOMManager.createTradeMark(TradeMark):-create div with styled logo and business name
@@ -15,11 +15,17 @@ Simple webpack bundled restaurant page
 
     all DOMManager methods return styled DOM elements except render() method
 # TradeMark
+/*
+TradeMark class encapsulates all the properties on the trademark including business name, Logos, and solgans
+*/
     TradeMark.#businessName
     TradeMark.#logo = {src:'',id:''}
+    TradeMark.#slogan
 
     TradeMark.setBusinessName(businessName)
     TradeMark.setLogo(path/to/img): set logo.src to path and unique logo.id
+    TradeMark.setSlogan(slogan)
+    TradeMark.getSlogan
     TradeMark.getBusinessName():-return businessName
     TradeMark.getLogo():-return logo obj
 

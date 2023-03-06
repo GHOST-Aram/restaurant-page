@@ -156,29 +156,29 @@ export function displayMenu(container) {
 
     contentContainer.appendChild(container)
 }
-export function displayPageHeader() {
-    //Ceate Page header
-    const header = manager.createPageHeader()
+// export function displayPageHeader() {
+//     //Ceate Page header
+//     const header = manager.createPageHeader()
 
-    //Create div container for Nav buttons
-    container = manager.creatContainer()
-    container.classList.add('flex', 'flex-row', 'items-center', 'justify-center', 'gap-8')
-    container.classList.remove('space-y-4')
+//     //Create div container for Nav buttons
+//     container = manager.creatContainer()
+//     container.classList.add('flex', 'flex-row', 'items-center', 'justify-center', 'gap-8')
+//     container.classList.remove('space-y-4')
 
-    //Create Nav buttons
-    const homeBtn = manager.createButton('Home', 'home-btn')
-    const menuBtn = manager.createButton('Menu', 'menu-btn')
-    const contactBtn = manager.createButton('Contacts', 'contact-btn')
+//     //Create Nav buttons
+//     const homeBtn = manager.createButton('Home', 'home-btn')
+//     const menuBtn = manager.createButton('Menu', 'menu-btn')
+//     const contactBtn = manager.createButton('Contacts', 'contact-btn')
     
-    let btns = [homeBtn,menuBtn,contactBtn]
-    //Render
-    btns.forEach(btn =>{
-        container.appendChild(btn)
-    })
-    header.appendChild(container)
-    document.body.prepend(header)
+//     let btns = [homeBtn,menuBtn,contactBtn]
+//     //Render
+//     btns.forEach(btn =>{
+//         container.appendChild(btn)
+//     })
+//     header.appendChild(container)
+//     document.body.prepend(header)
 
-}
+// }
 
 //Display page heading
 export function displayRestaurantName() {
