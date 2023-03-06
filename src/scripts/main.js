@@ -53,7 +53,7 @@ const manager = new DOMManager()
             document.querySelector('#light-breakfast-image').src = breakfastImg
         }).catch((error)=>{console.error(`Error occured while importing Light Breakfast Image: ${error}`)})
         
-    //Heavy breakfast
+    //Lunch Meals
     const lunch = new Meal('Lunch Time Stuff')
         lunch.setDescription('Take Your Most Favourite Lunch Meals Here, In a very relaxed atmosphere.')
         manager.render(content,manager.createMealCard(lunch))
@@ -63,4 +63,12 @@ const manager = new DOMManager()
             document.querySelector('#lunch-time-stuff-image').src = luchImg
         }).catch((error)=>{console.error(`Error occured while importing Lunch Image: ${error}`)})
 
-    
+    //Dinner Meals
+    const dinner = new Meal('Dine Dinners')
+        dinner.setDescription('We also have your best interests in the evenining. We Know Just what you need.')
+        manager.render(content,manager.createMealCard(dinner))
+
+        //Import image
+        import('../images/huge-breakfast.jpg').then(({default:dinnerImg}) =>{
+            document.querySelector('#dine-dinners-image').src = dinnerImg
+        }).catch((error)=>{console.error(`Error occured while importing Dinner Image: ${error}`)})
