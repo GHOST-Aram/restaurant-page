@@ -3,8 +3,7 @@ export default class TradeMark {
     // TradeMark.#businessName
         #businessName = ''
     // TradeMark.#logo = {src:'',id:''}
-        #logo = {id:''}
-        
+    
     // TradeMark.#slogan
         #slogan = ''
 
@@ -18,17 +17,14 @@ export default class TradeMark {
     getBusinessName() {
         return this.#businessName
     }
-    getLogoId() {
-        return this.#logo.id
+    generateId() {
+        return `${this.#businessName.toLocaleLowerCase().replaceAll(' ', '-')}-logo`
     }
     getSlogan() {
         return this.#slogan
     }
     setBusinessName(businessName) {
         this.#businessName = businessName
-    }
-    setLogoId(id) {
-        this.#logo.id = id
     }
     setSlogan(slogan) {
         this.#slogan = slogan

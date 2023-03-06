@@ -209,11 +209,11 @@ export default class DOMManager {
         container.classList.add('flex', 'flex-row', 'items-center', 'justify-between', 'mt-8', 'w-3/5')
     
         //create first logo image
-        const logo1 = this.createImage(`${TradeMark.getLogoId()}-1`)
+        const logo1 = this.createImage(`${TradeMark.generateId()}-1`)
         logo1.className = 'logo'
         
         //create 2nd logo img
-        const logo2 = this.createImage(`${TradeMark.getLogoId()}-2`)
+        const logo2 = this.createImage(`${TradeMark.generateId()}-2`)
         logo2.className = 'logo'
 
         
