@@ -29,6 +29,9 @@ Simple webpack bundled restaurant page
     Menu.createMenuItem(Item):- return menu object
     
 # Meal class
+    /*
+    Meal class encapsulate properties of meal object that are used in the hompage of the app to display the meals available at the restaurant
+    */
     mealCard object
     meal.name
     meal.#description
@@ -47,7 +50,9 @@ Simple webpack bundled restaurant page
 
     setters and getters methods
 # Item class
+    /*
     Item class encasuplates the properties of items
+    */
     item.name
     item.#img.src
     item.price
