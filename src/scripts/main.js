@@ -20,7 +20,7 @@ const manager = new DOMManager()
     //Create Trade Mark
     const tradeMark = new TradeMark()
         tradeMark.setBusinessName('Deep Fries Restaurant')
-        tradeMark.setSlogan('The Best Food You Will Ever Have')
+        tradeMark.setSlogan('The Best Meals You Will Ever Have')
 
         // Render trade MARK
         document.querySelector('main').prepend(manager.createTradeMark(tradeMark))
