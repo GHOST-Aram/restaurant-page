@@ -39,7 +39,9 @@ Simple webpack bundled restaurant page
     meal.#id
 
 # Contact class
-
+    /*
+    Contact class encapsulates all forms of contacts available in that organization 
+    */
     contact.#telephone
     contact.#email
     contact.#messenger

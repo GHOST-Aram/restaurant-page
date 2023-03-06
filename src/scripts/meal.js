@@ -1,6 +1,4 @@
-import Item from "./item"
-
-export default class Meal extends Item{
+export default class Meal{
     // # Meal class
     //     Meal.#description
     #description = ''
