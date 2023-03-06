@@ -32,6 +32,7 @@ const manager = new DOMManager()
 
     
     //Create and display Meals
+    //Heavy breakfast
     const heavyBreakfast = new Meal('Heavy Breakfast')
     heavyBreakfast.setDescription('Healthiest and Most Delicious Heavy Breakfasts in Town')
     manager.render(content,manager.createMealCard(heavyBreakfast))
@@ -40,3 +41,12 @@ const manager = new DOMManager()
     import('../images/huge-breakfast.jpg').then(({default:breakfastImg}) =>{
         document.querySelector('#heavy-breakfast-image').src = breakfastImg
     }).catch((error)=>{console.error(`Error occured while importing Heavy Breakfast Image Images: ${error}`)})
+    //Heavy breakfast
+    const lightBreakfast = new Meal('Light Breakfast')
+    lightBreakfast.setDescription('Sweetest Light Breakfasts in the whole East and Central Africa')
+    manager.render(content,manager.createMealCard(lightBreakfast))
+
+    //Import image
+    import('../images/light-breakfast.jpg').then(({default:breakfastImg}) =>{
+        document.querySelector('#light-breakfast-image').src = breakfastImg
+    }).catch((error)=>{console.error(`Error occured while importing Light Breakfast Image Images: ${error}`)})
