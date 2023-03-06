@@ -142,7 +142,7 @@ const manager = new DOMManager()
                     const email = manager.creatContact('Email', contact.getEmail())
 
                     //Facebook
-                    contact.setFacebook('Deep Fries Restauraant')
+                    contact.setFacebook('Deep Fries Restaurant')
                     const facebook = manager.creatContact('Facebook', contact.getFacebook())
 
                     //Instagram

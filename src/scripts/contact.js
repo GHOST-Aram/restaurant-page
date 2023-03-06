@@ -43,7 +43,7 @@ export default class Contact{
         this.#email = email
     }
     setFacebook(facebook){
-        this.facebook = facebook
+        this.#facebook = facebook
     }
     setInstagram(instagram){
         this.#instagram = instagram
