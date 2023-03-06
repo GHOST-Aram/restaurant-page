@@ -23,7 +23,7 @@ const manager = new DOMManager()
         tradeMark.setSlogan('The Best Food You Will Ever Have')
 
         // Render trade MARK
-        manager.render(content, manager.createTradeMark(tradeMark))
+        document.querySelector('main').prepend(manager.createTradeMark(tradeMark))
         
         //import logo images
         import('../images/coffeecup.png').then(({default:logoImg}) =>{
@@ -85,7 +85,51 @@ const manager = new DOMManager()
                 displayMeals()
 
             } else if(e.target.id === 'menu-btn'){
-              
+                content.innerHTML = ''
+                const menuContainer = manager.createMenuContainer('Breakfast')
+
+                //Menu Item 1
+                const item1 = new Item('Kenyan Breakfast')
+                    item1.setPrice('Ksh 890')
+                    const menuItem1 = manager.createMenuItem(item1)
+                    //Append to container
+                    menuContainer.appendChild(menuItem1)
+                    
+                    //Import image
+                    //Item-img
+                    import('../images/huge-breakfast.jpg').then(({default: image}) =>{
+                        document.querySelector('#kenyan-breakfast-img').src = image
+                    }).catch((error)=>console.log(`Error occured while importing menu item image: ${error}`))
+                    
+                //Menu Item 2
+                const item2 = new Item('South African Breakfast')
+                    item2.setPrice('Ksh 876')
+                    const menuItem2 = manager.createMenuItem(item2)
+                    //Append to container
+                    menuContainer.appendChild(menuItem2)
+                    
+                    //Import image
+                    //Item-img
+                    import('../images/lunch-meals.jpeg').then(({default: image}) =>{
+                        document.querySelector('#south-african-breakfast-img').src = image
+                    }).catch((error)=>console.log(`Error occured while importing menu item image: ${error}`))
+
+                //Menu Item 3
+                const item3 = new Item('English Breakfast')
+                    item3.setPrice('Ksh 980')
+                    const menuItem3 = manager.createMenuItem(item3)
+                    //Append to container
+                    menuContainer.appendChild(menuItem3)
+                    
+                    //Import image
+                    //Item-img
+                    import('../images/light-breakfast.jpg').then(({default: image}) =>{
+                        document.querySelector('#english-breakfast-img').src = image
+                    }).catch((error)=>console.log(`Error occured while importing menu item image: ${error}`))
+                    
+                //render menu container
+                manager.render(content, menuContainer)
+
             }else if(e.target.id === 'contact-btn'){
                 content.innerHTML = ''
                 console.log('Contacts come here')
