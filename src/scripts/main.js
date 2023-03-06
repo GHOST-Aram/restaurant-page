@@ -34,19 +34,33 @@ const manager = new DOMManager()
     //Create and display Meals
     //Heavy breakfast
     const heavyBreakfast = new Meal('Heavy Breakfast')
-    heavyBreakfast.setDescription('Healthiest and Most Delicious Heavy Breakfasts in Town')
-    manager.render(content,manager.createMealCard(heavyBreakfast))
+        heavyBreakfast.setDescription('Healthiest and Most Delicious Heavy Breakfasts in Town')
+        manager.render(content,manager.createMealCard(heavyBreakfast))
 
-    //Import image
-    import('../images/huge-breakfast.jpg').then(({default:breakfastImg}) =>{
-        document.querySelector('#heavy-breakfast-image').src = breakfastImg
-    }).catch((error)=>{console.error(`Error occured while importing Heavy Breakfast Image Images: ${error}`)})
-    //Heavy breakfast
+        //Import image
+        import('../images/huge-breakfast.jpg').then(({default:breakfastImg}) =>{
+            document.querySelector('#heavy-breakfast-image').src = breakfastImg
+        }).catch((error)=>{console.error(`Error occured while importing Heavy Breakfast Image: ${error}`)})
+
+        
+    //Light breakfast
     const lightBreakfast = new Meal('Light Breakfast')
-    lightBreakfast.setDescription('Sweetest Light Breakfasts in the whole East and Central Africa')
-    manager.render(content,manager.createMealCard(lightBreakfast))
+        lightBreakfast.setDescription('Sweetest Light Breakfasts in the whole East and Central Africa')
+        manager.render(content,manager.createMealCard(lightBreakfast))
 
-    //Import image
-    import('../images/light-breakfast.jpg').then(({default:breakfastImg}) =>{
-        document.querySelector('#light-breakfast-image').src = breakfastImg
-    }).catch((error)=>{console.error(`Error occured while importing Light Breakfast Image Images: ${error}`)})
+        //Import image
+        import('../images/light-breakfast.jpg').then(({default:breakfastImg}) =>{
+            document.querySelector('#light-breakfast-image').src = breakfastImg
+        }).catch((error)=>{console.error(`Error occured while importing Light Breakfast Image: ${error}`)})
+        
+    //Heavy breakfast
+    const lunch = new Meal('Lunch Time Stuff')
+        lunch.setDescription('Take Your Most Favourite Lunch Meals Here, In a very relaxed atmosphere.')
+        manager.render(content,manager.createMealCard(lunch))
+
+        //Import image
+        import('../images/lunch-meals.jpeg').then(({default:luchImg}) =>{
+            document.querySelector('#lunch-time-stuff-image').src = luchImg
+        }).catch((error)=>{console.error(`Error occured while importing Lunch Image: ${error}`)})
+
+    
