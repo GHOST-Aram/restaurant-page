@@ -115,14 +115,14 @@ export default class DOMManager {
         const mealCardContainer = this.creatContainer()
 
         //Heading
-        const heading = this.createHeading(Meal.name, Meal.generateId())
+        const heading = this.createHeading(Meal.name, `${Meal.generateId()}-heading`)
 
         //image
         const mealImg = this.createImage(`${Meal.generateId()}-image`)
         mealImg.classList.add('meals-img')
 
         //Description paragraph
-        let description = this.createParagraph(Meal.getDescription())
+        const description = this.createParagraph(Meal.getDescription())
 
         //Append to mealContainer
         mealCardContainer.appendChild(heading)
@@ -156,7 +156,7 @@ export default class DOMManager {
                             'justify-between', 'py-4','border-b-2', 
                             'border-solid', 'w-full','border-slate-500')
         //Item Img
-        const itemImg =this.createImage(`${Item.name.replace(' ', '')}-img`)
+        const itemImg =this.createImage(`${Item.generateId()}-img`)
         itemImg.className = 'item'
     
         
@@ -238,5 +238,9 @@ export default class DOMManager {
 
         //Return trademark container
         return container
+    }
+    //Rednder to DOM
+    render(parent, child){
+        parent.appendChild(child)
     }
 }

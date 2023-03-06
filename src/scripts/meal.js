@@ -3,7 +3,6 @@ export default class Meal{
     //     Meal.#description
     #description = ''
     //     Meal.#img
-    #img = {id}
     
     
     constructor(name){
@@ -21,14 +20,7 @@ export default class Meal{
         //return meal description text 
         return this.#description
     }
-    getImgId(){
-        //return item Image source
-        return this.#img.id
-    }
-    setImageId(id){
-        //Set image id
-        this.#img.id = id
-    }
+    
     setDescription(description){
         //Set description text for the meal
         this.description = description
