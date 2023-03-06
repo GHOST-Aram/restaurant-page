@@ -72,3 +72,6 @@ const manager = new DOMManager()
         import('../images/huge-breakfast.jpg').then(({default:dinnerImg}) =>{
             document.querySelector('#dine-dinners-image').src = dinnerImg
         }).catch((error)=>{console.error(`Error occured while importing Dinner Image: ${error}`)})
+
+    //Create Footer
+    document.body.appendChild(manager.createFooter())
