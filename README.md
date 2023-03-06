@@ -24,9 +24,7 @@ Simple webpack bundled restaurant page
     TradeMark.getLogo():-return logo obj
 
 
-# Menu class imports item class
-    
-    Menu.createMenuItem(Item):- return menu object
+
     
 # Meal class
     /*
